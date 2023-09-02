@@ -1,4 +1,5 @@
-# [Manually Timed Events]()
+# [События с ручной временной привязкой](https://github.com/UniBreakfast/manually-timed-events) &nbsp; &nbsp; [Manually Timed Events](https://github.com/UniBreakfast/manually-timed-events)
+
 
 | Русский | English |
 |-:|:-|
