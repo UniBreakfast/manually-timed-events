@@ -1,0 +1,37 @@
+<section class="pause-run-state paused">
+  <div class="paused">
+    <button class="run">run</button>
+    <span class="state">paused</span>
+  </div>
+  <div class="running">
+    <button class="pause">pause</button>
+    <span class="state">running</span>
+  </div>
+</section>
+
+<style>
+  .paused>.running, .running>.paused {
+    display: none;
+  }
+
+  .pause-run-state button {
+    width: 4em;
+  }
+
+  .pause-run-state .state {
+    display: inline-block;
+    width: 4em;
+  }
+</style>
+
+<script>
+  const [pauseRunStateContainer] = document.getElementsByClassName('pause-run-state');
+  const [pauseBtn, runBtn] = pauseRunStateContainer.getElementsByTagName('button');
+
+  pauseBtn.onclick = runBtn.onclick = handleRunPauseClick;
+
+  function handleRunPauseClick() {
+    pauseRunStateContainer.classList.toggle('paused');
+    pauseRunStateContainer.classList.toggle('running'); 
+  }
+</script>
