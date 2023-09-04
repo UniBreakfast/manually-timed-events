@@ -1,0 +1,68 @@
+<section class="set-date-time">
+  <button class="set-date-time">set date/time</button>
+
+  <div class="glass" hidden>
+    <div class="modal">
+      <h3>set date/time</h3>
+      <form action="javascript:" class="set-date-time">
+        <div>
+          <label>
+            <span>date:</span>
+            <input type="date" name="date">
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <span>time:</span>
+            <input type="time" name="time">
+          </label>
+        </div>
+
+        <div>
+          <button type="submit">set</button>
+          <button type="reset">cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  [hidden] {
+    display: none !important;
+  }
+
+  .glass {
+    position: fixed;
+    inset: 0;
+    display: flex;
+  }
+
+  .modal {
+    margin: auto;
+    width: max-content;
+    border: 1px solid;
+    padding: 1em;
+  }
+
+  form.set-date-time {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+</style>
+
+<script>
+  const [setDateTimeBtn, setBtn, cancelBtn] = document.querySelectorAll('.set-date-time button');
+  const glass = document.querySelector('.set-date-time .glass');
+
+
+  setDateTimeBtn.onclick = toggleSetDateTimeModal;
+  cancelBtn.onclick = toggleSetDateTimeModal;
+  setBtn.onclick = toggleSetDateTimeModal;
+
+  function toggleSetDateTimeModal() {
+    glass.hidden = !glass.hidden;
+  }
+</script>
