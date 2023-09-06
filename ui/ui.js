@@ -30,6 +30,7 @@ const ui = {
 
   assignListeners() {
     pauseRunControls.assignListeners();
+    setDateTimeControls.assignListeners();
   },
 
   deployOnPage() {
