@@ -24,7 +24,14 @@
 | Заданы задачи на создание документации для файлов вёрстки | Set tasks to make documentation for layout part html files |
 | [🔝](#top) **5 сентября** [🔝](#top) | [🔝](#top) **September 5** [🔝](#top) |
 | Начат devlog-файл с историей разработки | Make devlog file with the development history |
-
+| Сделана документация для `app.js` | Make documentation for `app.js` |
+| Сделана документация для `ui.js` | Make documentation for `ui.js` |
+| [🔝](#top) **6 сентября** [🔝](#top) | [🔝](#top) **September 6** [🔝](#top) |
+| Заготовлен объект dateTimeScreen | Prepare dateTimeScreen component object |
+| Заготовлен объект pauseRunControls | Prepare pauseRunControls component object |
+| Заготовлен объект setDateTimeControls | Prepare setDateTimeControls component object |
+| Заготовлен объект splashButtonBlock | Prepare splashButtonBlock component object |
+| Заготовлен объект eventListHolder | Prepare eventListHolder component object |
 <!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
