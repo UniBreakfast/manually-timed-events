@@ -1,5 +1,7 @@
 ### [События с ручной временной привязкой](https://github.com/UniBreakfast/manually-timed-events) &nbsp; &nbsp; [Manually&nbsp;Timed&nbsp;Events](https://github.com/UniBreakfast/manually-timed-events)
+
 <div id="header"></div>
+
 # [Документация](https://github.com/UniBreakfast/manually-timed-events/tree/main/docs) &nbsp; &nbsp; [Documentation](http://unibreakfast.github.io/manually-timed-events/tree/main/docs)
 
 | *Русский* | *English* |
