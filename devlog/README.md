@@ -1,32 +1,31 @@
-  2023, September 2
+### [События с ручной временной привязкой](https://github.com/UniBreakfast/manually-timed-events) &nbsp; &nbsp; [Manually&nbsp;Timed&nbsp;Events](https://github.com/UniBreakfast/manually-timed-events)
 
-Make README.md file
-Make app parts: UI object, EventHub object, and App main function
+###### top
 
-  September 3
+# [Дневник разработки](https://github.com/UniBreakfast/manually-timed-events/tree/main/devlog) &nbsp; &nbsp; [Devlog](https://github.com/UniBreakfast/manually-timed-events/tree/main/devlog)
 
-Write the first user story
-Create tasks based on the first user story
+| *Русский* | *English* |
+|-:|:-|
+| [🔝](#top) **2 сентября 2023** [🔝](#top) | [🔝](#top) **2023, September 2** [🔝](#top) |
+| Создан файл `README.md` | Make `README.md` file |
+| Созданы части приложения: объект `UI`, объект `EventHub` и функция `main()` в `app.js` | Make app parts: `UI` object, `EventHub` object, and App `main()` function |
+| [🔝](#top) **3 сентября** [🔝](#top) | [🔝](#top) **September 3** [🔝](#top) |
+| Написана первая история пользователя | Write the first user story |
+| Созданы задачи на основе первой истории пользователя | Create tasks based on the first user story |
+| [🔝](#top) **4 сентября** [🔝](#top) | [🔝](#top) **September 4** [🔝](#top) |
+| Составлен список частей интерфейса, которые нужно сделать | List UI parts to make |
+| Добавлены задачи на создание перечисленных частей интерфейса | Add tasks for making of listed UI parts |
+| Сделана вёрстка отображения текущей даты/времени | Current date/time display layout |
+| Сделана вёрстка кнопок паузы/запуска, индикатора состояния | Buttons to pause/run, state indicator layout |
+| Сделана вёрстка кнопки и модальной формы для установки конкретной даты/времени | Button and modal form to set specific date/time layout |
+| Сделана вёрстка кнопки "Splash" | Splash button layout |
+| Сделана вёрстка списка событий | Event list layout |
+| Собраны все 5 частей вёрстки вместе и показаны с помощью `ui.render()` | Bring all 5 layout parts together and show them with `ui.render()` |
+| Заданы задачи на создание документации для файлов вёрстки | Set tasks to make documentation for layout part html files |
+| [🔝](#top) **5 сентября** [🔝](#top) | [🔝](#top) **September 5** [🔝](#top) |
+| Начат devlog-файл с историей разработки | Make devlog file with the development history |
 
-  September 4
-
-List UI parts to make
-Add tasks for making of listed UI parts
-Current date/time display layout
-Buttons to pause/run, state indicator layout
-Button and modal form to set specific date/time layout
-Splash button layout
-Event list layout
-Bring all 5 layout parts together and show them with ui.render()
-Set tasks to make documentation for layout part html files
-
-  September 5
-
-Make devlog file with the development history
-
-
-
-
+<!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
 Build setDateTimeControls component object
@@ -39,4 +38,5 @@ Make documentation for current-date-time.html layout
 Make documentation for event-list.html layout
 Make documentation for pause-run-state.html layout
 Make documentation for set-date-time.html layout
-Make documentation for splash-button.html layout
+Make documentation for splash-button.html layout 
+-->
