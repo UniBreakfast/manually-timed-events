@@ -2,7 +2,7 @@
 
 ###### top
 
-# [Документация](https://github.com/UniBreakfast/manually-timed-events/tree/main/docs) &nbsp; &nbsp; [Documentation](http://unibreakfast.github.io/manually-timed-events/tree/main/docs)
+# [Документация](https://github.com/UniBreakfast/manually-timed-events/tree/main/docs) &nbsp; &nbsp; [Documentation](https://github.com/UniBreakfast/manually-timed-events/tree/main/docs)
 
 | *Русский* | *English* |
 |-:|:-|
