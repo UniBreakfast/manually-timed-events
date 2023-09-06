@@ -32,8 +32,9 @@
 | Заготовлен объект setDateTimeControls | Prepare setDateTimeControls component object |
 | Заготовлен объект splashButtonBlock | Prepare splashButtonBlock component object |
 | Заготовлен объект eventListHolder | Prepare eventListHolder component object |
-| Сделано визуальное переключение между состояниями паузы/работы | Make visual switching between pause/run states |
-| Сделано открытие/закрытие модальной формы установки конкретной даты/времени | Make modal form open/close for setting specific date/time |
+| Сделано визуальное переключение между состояниями паузы/работы | Implement visual toggle between paused/running states |
+| Сделано открытие/закрытие модальной формы установки конкретной даты/времени | Implement open/close modal set date/time |
+
 <!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
