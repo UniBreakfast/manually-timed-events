@@ -1,6 +1,6 @@
 ### [События с ручной временной привязкой](https://github.com/UniBreakfast/manually-timed-events) &nbsp; &nbsp; [Manually&nbsp;Timed&nbsp;Events](https://github.com/UniBreakfast/manually-timed-events)
 
-# [Вёрстка](https://github.com/UniBreakfast/manually-timed-events/layout) &nbsp; &nbsp; [Layout](https://github.com/UniBreakfast/manually-timed-events/layout)
+# [Вёрстка](https://github.com/UniBreakfast/manually-timed-events/tree/main/layout) &nbsp; &nbsp; [Layout](https://github.com/UniBreakfast/manually-timed-events/tree/main/layout)
 
 | *Русский* | *English* |
 |-:|:-|
