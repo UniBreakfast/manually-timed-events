@@ -28,10 +28,13 @@ const ui = {
     this.element = appContent;
   },
 
+  assignListeners() {
+    pauseRunControls.assignListeners();
+  },
+
   deployOnPage() {
     document.body.append(this.element)
   },
-
 
 };
 

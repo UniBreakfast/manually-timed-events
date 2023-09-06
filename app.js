@@ -6,6 +6,7 @@ main();
 function main() {
   ui.render();
   ui.deployOnPage();
+  ui.assignListeners();
   eventHub.init();
 }
 
