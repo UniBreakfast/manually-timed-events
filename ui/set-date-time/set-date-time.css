@@ -1,0 +1,22 @@
+[hidden] {
+  display: none !important;
+}
+
+.glass {
+  position: fixed;
+  inset: 0;
+  display: flex;
+}
+
+.modal {
+  margin: auto;
+  width: max-content;
+  border: 1px solid;
+  padding: 1em;
+}
+
+form.set-date-time {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

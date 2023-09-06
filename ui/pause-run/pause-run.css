@@ -1,0 +1,12 @@
+.paused>.running, .running>.paused {
+  display: none;
+}
+
+.pause-run-state button {
+  width: 4em;
+}
+
+.pause-run-state .state {
+  display: inline-block;
+  width: 4em;
+}
