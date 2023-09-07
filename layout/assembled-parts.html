@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head id="head">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+	<title>Manually Timed Events</title>
+
+	<link rel="stylesheet" href="assembled-parts.css">
+
+	<script>
+		onload = () => {
+			const [pauseRunStateContainer] = document.getElementsByClassName('pause-run-state');
+			const [pauseBtn, runBtn] = pauseRunStateContainer.getElementsByTagName('button');
+			const [setDateTimeBtn, setBtn, cancelBtn] = document.querySelectorAll('.set-date-time button');
+			const glass = document.querySelector('.set-date-time .glass');
+
+			pauseBtn.onclick = runBtn.onclick = handleRunPauseClick;
+			setDateTimeBtn.onclick = toggleSetDateTimeModal;
+			cancelBtn.onclick = toggleSetDateTimeModal;
+			setBtn.onclick = toggleSetDateTimeModal;
+
+			function handleRunPauseClick() {
+				pauseRunStateContainer.classList.toggle('paused');
+				pauseRunStateContainer.classList.toggle('running');
+			}
+
+			function toggleSetDateTimeModal() {
+				glass.hidden = !glass.hidden;
+			}
+		}
+	</script>
+</head>
+
+<body id="body">
+	<div id="splash-event-app">
+		<section class="current-date-time">
+			<time datetime="2020-02-02 20:02">
+				<h3 class="current-date">
+					<span class="year">2020</span>
+					-
+					<span class="month">02</span>
+					-
+					<span class="day">02</span>
+				</h3>
+
+				<h2 class="current-time">
+					<span class="hours">20</span>
+					:
+					<span class="minutes">02</span>
+				</h2>
+			</time>
+		</section>
+
+		<section class="pause-run-state paused">
+			<div class="paused">
+				<button class="run">run</button>
+				<span class="state">paused</span>
+			</div>
+
+			<div class="running">
+				<button class="pause">pause</button>
+				<span class="state">running</span>
+			</div>
+		</section>
+
+		<section class="set-date-time">
+			<button class="set-date-time">set date/time</button>
+
+			<div class="glass" hidden>
+				<div class="modal">
+					<h3>set date/time</h3>
+
+					<form action="javascript:" class="set-date-time">
+						<div>
+							<label>
+								<span>date:</span>
+								<input type="date" name="date">
+							</label>
+						</div>
+
+						<div>
+							<label>
+								<span>time:</span>
+								<input type="time" name="time">
+							</label>
+						</div>
+
+						<div>
+							<button type="submit">set</button>
+							<button type="reset">cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<section class="splash">
+			<button class="splash">splash</button>
+		</section>
+
+		<section class="event-list">
+			<ul class="event-list">
+				<li class="event">
+					splash at
+					<time datetime="2020-02-02 20:02">2020-02-02 20:02</time>
+				</li>
+				<li class="event">
+					splash at
+					<time datetime="2020-02-02 20:03">2020-02-02 20:03</time>
+				</li>
+				<li class="event">
+					splash at
+					<time datetime="2020-02-02 20:04">2020-02-02 20:04</time>
+				</li>
+			</ul>
+		</section>
+	</div>
+</body>
+
+</html>

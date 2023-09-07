@@ -34,7 +34,9 @@
 | Заготовлен объект eventListHolder | Prepare eventListHolder component object |
 | Сделано визуальное переключение между состояниями паузы/работы | Implement visual toggle between paused/running states |
 | Сделано открытие/закрытие модальной формы установки конкретной даты/времени | Implement open/close modal set date/time |
-
+| [🔝](#top) **7 сентября** [🔝](#top) | [🔝](#top) **September 7** [🔝](#top) |
+| Собраны вместе все компоненты интерфейса в одном файле assembled-parts.html (+css) | Assembly all UI components together in one file assembled-parts.html (+css) |
+<!-- | Расположены компоненты интерфейса для мобильного портретного, ландшафтного, планшетного и десктопного режимов | Arrange UI components for mobile portrait, landscape, tablet, and desktop modes | -->
 <!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
