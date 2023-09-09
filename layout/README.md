@@ -2,6 +2,8 @@
 
 # [Вёрстка](https://github.com/UniBreakfast/manually-timed-events/tree/main/layout) &nbsp; &nbsp; [Layout](https://github.com/UniBreakfast/manually-timed-events/tree/main/layout)
 
+![image](https://github.com/UniBreakfast/manually-timed-events/assets/19654456/64eeb6a4-1ccc-45ea-9e83-d012c442a8f6)
+
 | *Русский* | *English* |
 |-:|:-|
 | **Части графического интерфейса пользователя:** | **Parts of the graphical user interface:** |
