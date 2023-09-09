@@ -1,0 +1,131 @@
+/**                Mobile-First                 **/
+
+body {
+  margin: 0;
+}
+
+#splash-event-app, #splash-event-app button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: min(4vmin, 30px);
+}
+
+#splash-event-app {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: 3vmin;
+  display: grid;
+  gap: 3vmin;
+}
+
+section.current-date-time {
+  grid-area: clock;
+}
+
+section.pause-run-state {
+  grid-area: state;
+}
+
+section.set-date-time {
+  grid-area: set-btn;
+}
+
+section.splash {
+  grid-area: splash;
+  text-align: center;
+}
+
+section.event-list {
+  grid-area: events;
+  overflow: auto;
+}
+
+/*!====== Mobile Portrait (320px - 480px) ======!*/
+
+#splash-event-app {
+  grid-template: 
+    "clock set-btn"
+    "clock state"  
+    "splash splash"
+    "events events" 1fr;
+}
+
+.current-date {
+  font-size: 1.9em;
+}
+
+.current-time {
+  font-size: 3.8em;
+}
+
+/*!===== Mobile Landscape (481px - 767px) ======!*/
+
+@media (width > 480px) {
+  #splash-event-app {
+    grid-template: 
+      "set-btn events" 1fr
+      "state events" 
+      "clock events" 
+      "splash events" 1fr
+  }
+
+  section.current-date-time,
+  section.pause-run-state,
+  section.set-date-time {
+    justify-self: center;
+    align-self: end;
+  }
+
+  section.splash {
+    text-align: right;
+  }
+}
+
+/*!========== Tablet (768px - 1023px) ==========!*/
+
+@media (width >= 768px), (width > 480px) and (orientation: portrait) {
+  #splash-event-app {
+    grid-template: 
+    "clock set-btn"
+    "clock state"  
+    "splash splash"
+    "events events" 1fr;
+  }
+
+  section.current-date-time,
+  section.pause-run-state,
+  section.set-date-time {
+    justify-self: unset;
+  }
+
+  section.splash {
+    text-align: center;
+  }
+}
+
+@media (width >= 768px) and (orientation: landscape) {
+  #splash-event-app {
+    grid-template: 
+      "set-btn events" 1fr
+      "state events" 
+      "clock events" 
+      "splash events" 1fr
+  }
+
+  section.current-date-time,
+  section.pause-run-state,
+  section.set-date-time {
+    justify-self: center;
+    align-self: end;
+  }
+
+  section.splash {
+    text-align: right;
+  }
+}
+
+/*!===== Desktop/Laptop (1024px and above) =====!*/
+
+#splash-event-app, #splash-event-app button {
+  font-size: min(4vmin, 24px);
+}

@@ -23,8 +23,8 @@ const pauseRunControls = {
     pausedSpan.textContent = 'paused';
     runningSpan.textContent = 'running';
     
-    pausedBlock.append(runBtn, pausedSpan);
-    runningBlock.append(pauseBtn, runningSpan);
+    pausedBlock.append(runBtn, ' ', pausedSpan);
+    runningBlock.append(pauseBtn, ' ', runningSpan);
     section.append(pausedBlock, runningBlock);
 
     this.element = section;

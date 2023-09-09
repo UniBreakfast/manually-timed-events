@@ -13,6 +13,7 @@
   width: max-content;
   border: 1px solid;
   padding: 1em;
+  background-color: white;
 }
 
 form.set-date-time {
