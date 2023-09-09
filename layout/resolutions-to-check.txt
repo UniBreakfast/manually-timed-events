@@ -1,0 +1,24 @@
+Portrait, 320 x 480
+Portrait, 400 x 600
+Portrait, 480 x 720
+
+Landscape, 481 x 320
+Landscape, 568 x 320
+Landscape, 640 x 360
+Landscape, 767 x 432
+
+Portrait, 768 x 1024
+Portrait, 800 x 1067
+Portrait, 960 x 1280
+
+Landscape, 768 x 576
+Landscape, 800 x 600
+Landscape, 960 x 720
+Landscape, 1023 x 767
+
+Laptop/Desktop, 1024 x 768
+Laptop/Desktop, 1280 x 960
+Laptop/Desktop, 1366 x 1024
+Laptop/Desktop, 1440 x 1080
+Laptop/Desktop, 1600 x 1200
+Laptop/Desktop, 1920 x 1080
