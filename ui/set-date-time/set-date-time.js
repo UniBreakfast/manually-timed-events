@@ -31,7 +31,7 @@ const setDateTimeControls = {
 
     form.innerHTML = buildMarkup();
 
-    form.appendChild(btnContainer).append(setBtn, cancelBtn);
+    form.appendChild(btnContainer).append(setBtn, ' ', cancelBtn);
     glass.appendChild(modal).append(heading, form);
     section.append(openModalBtn, glass);
 
