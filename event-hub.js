@@ -8,7 +8,8 @@ const eventHub = Object.assign(new EventTarget(), {
 
     clock.addEventListener('tick', e => {
       const { dateTime } = e.detail;
-      const detail = { dateTime };
+      const isoDateTime = dateTime.toISOString().replace('T', ' ').slice(0, 16)
+      const detail = { dateTime: isoDateTime };
       const event = new CustomEvent('timeChange', { detail });
 
       this.dispatchEvent(event);
