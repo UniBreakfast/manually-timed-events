@@ -18,43 +18,32 @@
 | Экспортирует объект `ui`, который содержит методы `render()` и `deployOnPage()`. Метод `render()` создаёт всю DOM-структуру приложения, а метод `deployOnPage()` размещает её на странице. | Exports the `ui` object, which contains the `render()` and `deployOnPage()` methods. The `render()` method creates the entire DOM structure of the application, and the `deployOnPage()` method places it on the page. |
 | Метод `render()` создаёт контейнер приложения - `div` с `id="splash-event-app"`. В него добавляются все элементы, которые создают методы `render()` соответствующих модулей. Для этого используются их методы `appendTo()`. После этого созданный элемент `div` присваивается свойству `element` объекта `ui`. | The `render()` method creates the application container - `div` with `id="splash-event-app"`. All elements that the `render()` methods of the corresponding modules create are added to it. Their `appendTo()` methods are used for this. After that, the created `div` element is assigned to the `element` property of the `ui` object. |
 | Метод `deployOnPage()` размещает контейнер приложения на странице. | The `deployOnPage()` method places the application container on the page. |
+| [🔝](#top) **[Основной модуль логики/контроля `event-hub.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/event-hub.js)** [🔝](#top) | [🔝](#top) **[Main logic/control module `event-hub.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/event-hub.js)** [🔝](#top) |
+| Импортирует объект `clock` из файла `clock.js`. | Imports the `clock` object from the `clock.js` file. |
+| Экспортирует объект `eventHub`, который является экземпляром класса `EventTarget` и содержит методы `init()` для начала работы | Exports the `eventHub` object, which is an instance of the `EventTarget` class and contains the `init()` method to start work |
+ | Метод `init()` запускает часы методом `clock.run()`. Он же генерирует событие `timeChange` сигнализирующее о наступлении очередной минуты. Об этом он сам узнаёт из события `tick` объекта `clock`. Полученный из него объект даты и времени преобразует в строку ISO и добавляет в объект события `timeChange` в свойство `detail`. После этого он запускает событие `timeChange`. | The `init()` method starts the clock with the `clock.run()` method. It also generates the `timeChange` event signaling the onset of the next minute. He learns about this from the `tick` event of the `clock` object. It converts the date and time object obtained from it into an ISO string and adds it to the `detail` property of the `timeChange` event object. After that, it starts the `timeChange` event. |
 | [🔝](#top) **[Модуль часов/календаря `clock.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/clock.js)** [🔝](#top) | [🔝](#top) **[Clock/calendar module `clock.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/clock.js)** [🔝](#top) |
 | Экспортирует объект `clock`, который является экземпляром класса `EventTarget` и после запуска методом `run()` генерирует событие `tick` каждые 800 миллисекунд. | Exports the `clock` object, which is an instance of the `EventTarget` class and after being launched by the `run()` method generates the `tick` event every 800 milliseconds. |
 | Метод `run()` запускает таймер, который десять раз в секунду увеличивает свой собственный счётчик виртуального времени на количество миллисекунд, соответствующее прошедшему с предыдущего увеличения умноженному на 75. Что обеспечивает увеличение на одну минуту каждые 800 миллисекунд. При увеличении минут генерируется событие `tick`. | The `run()` method starts a timer that ten times a second increases its own counter of virtual time by the number of milliseconds corresponding to the time elapsed since the previous increase multiplied by 75. Which ensures an increase of one minute every 800 milliseconds. When the minutes increase, the `tick` event is generated. |
 
-<!-- export { clock };
+<!-- 
+export { eventHub };
 
-const accuracyInterval = 99;
-const multiplier = 75; // 1min per 800ms
-let prevTime = 1580666520000; // 2020-02-02 20:02
-let lastTimeStamp = Date.now();
-let prevMinute = 0;
+import { clock } from './clock.js';
 
-const clock = Object.assign(new EventTarget(), {
-  run() {
-    setInterval(() => {
-      const timeStamp = Date.now();
-      const delta = timeStamp - lastTimeStamp;
-      const time = prevTime + delta * multiplier;
-      const dateTime = new Date(time);
-      const minute = dateTime.getMinutes();
+const eventHub = Object.assign(new EventTarget(), {
+  init() {
+    clock.run();
 
-      if (minute != prevMinute) {
-        const detail = { dateTime };
-        const event = new CustomEvent('tick', { detail });
+    clock.addEventListener('tick', e => {
+      const { dateTime } = e.detail;
+      const isoDateTime = dateTime.toISOString().replace('T', ' ').slice(0, 16)
+      const detail = { dateTime: isoDateTime };
+      const event = new CustomEvent('timeChange', { detail });
 
-        this.dispatchEvent(event);
-
-        prevMinute = minute;
-      }
-
-      prevTime = time;
-      lastTimeStamp = timeStamp;
-    }, accuracyInterval);
+      this.dispatchEvent(event);
+    });
   },
 });
 
-
-// 60000ms -> 800ms
-// 1ms -> 800/60000 = 1/75 = 0.013333333333333334ms
  -->
