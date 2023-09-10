@@ -37,6 +37,9 @@ const ui = {
     document.body.append(this.element)
   },
 
+  updateDateTime(dateTime) {
+    dateTimeScreen.update(dateTime);
+  }
 };
 
 /* 
