@@ -3,33 +3,51 @@ export { dateTimeScreen };
 const dateTimeScreen = {
   render() {
     const section = document.createElement('section');
+    const time = document.createElement('time');
+    const date = document.createElement('h3');
+    const timeOfDay = document.createElement('h2');
+    const year = document.createElement('span');
+    const month = document.createElement('span');
+    const day = document.createElement('span');
+    const hours = document.createElement('span');
+    const minutes = document.createElement('span');
 
     section.classList.add('current-date-time');
-    section.innerHTML = buildMarkup();
+    date.classList.add('current-date');
+    timeOfDay.classList.add('current-time');
+    year.classList.add('year');
+    month.classList.add('month');
+    day.classList.add('day');
+    hours.classList.add('hours');
+    minutes.classList.add('minutes');
+
+    date.append(year, '-', month, '-', day);
+    timeOfDay.append(hours, ':', minutes);
+    time.append(date, timeOfDay);
+    section.append(time);
 
     this.element = section;
+    this.timeElement = time;
+    this.yearSpan = year;
+    this.monthSpan = month;
+    this.daySpan = day;
+    this.hoursSpan = hours;
+    this.minutesSpan = minutes;
   },
 
   appendTo(parent) {
     parent.append(this.element);
   },
-};
 
-function buildMarkup() {
-  return `
-    <time datetime="2020-02-02 20:02">
-      <h3 class="current-date">
-        <span class="year">2020</span>
-        -
-        <span class="month">02</span>
-        -
-        <span class="day">02</span>
-      </h3>
-      <h2 class="current-time">
-        <span class="hours">20</span>
-        :
-        <span class="minutes">02</span>
-      </h2>
-    </time>
-  `;
-}
+  update(dateTime) { // yyyy-mm-dd hh:mm
+    const [year, month, day, hours, minutes] = dateTime.split(/\D/);
+
+    this.timeElement.dateTime = dateTime;
+
+    this.yearSpan.textContent = year;
+    this.monthSpan.textContent = month;
+    this.daySpan.textContent = day;
+    this.hoursSpan.textContent = hours;
+    this.minutesSpan.textContent = minutes;
+  }
+};
