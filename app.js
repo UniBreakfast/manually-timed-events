@@ -13,9 +13,7 @@ function main() {
   eventHub.addEventListener('timeChange', e => {
     const { dateTime } = e.detail;
 
-    // ui.updateDateTime(dateTime)
-
-    console.log(dateTime);
+    ui.updateDateTime(dateTime)
   });
 }
 
