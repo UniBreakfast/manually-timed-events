@@ -15,9 +15,11 @@
 | Ожидается, что метод `init()` подготовит объект `eventHub` к работе. | It is expected that the `init()` method will prepare the `eventHub` object for work. |
 | [🔝](#top) **[Модуль интерфейса `ui.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/ui/ui.js)** [🔝](#top) | [🔝](#top) **[Graphical interface module `ui.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/ui/ui.js)** [🔝](#top) |
 | Импортирует объекты `dateTimeScreen`, `pauseRunControls`, `setDateTimeControls`, `splashButtonBlock` и `eventListHolder` из соответствующих файлов в подпапках папки `ui`. | Imports objects `dateTimeScreen`, `pauseRunControls`, `setDateTimeControls`, `splashButtonBlock` and `eventListHolder` from the corresponding files in the subfolders of the `ui` folder. |
-| Экспортирует объект `ui`, который содержит методы `render()` и `deployOnPage()`. Метод `render()` создаёт всю DOM-структуру приложения, а метод `deployOnPage()` размещает её на странице. | Exports the `ui` object, which contains the `render()` and `deployOnPage()` methods. The `render()` method creates the entire DOM structure of the application, and the `deployOnPage()` method places it on the page. |
+| Экспортирует объект `ui`, который содержит методы `render()`, `deployOnPage()`, `assignListeners()` и `updateDateTime()`. | Exports the `ui` object, which contains the `render()`, `deployOnPage()`, `assignListeners()` and `updateDateTime()` methods. |
 | Метод `render()` создаёт контейнер приложения - `div` с `id="splash-event-app"`. В него добавляются все элементы, которые создают методы `render()` соответствующих модулей. Для этого используются их методы `appendTo()`. После этого созданный элемент `div` присваивается свойству `element` объекта `ui`. | The `render()` method creates the application container - `div` with `id="splash-event-app"`. All elements that the `render()` methods of the corresponding modules create are added to it. Their `appendTo()` methods are used for this. After that, the created `div` element is assigned to the `element` property of the `ui` object. |
 | Метод `deployOnPage()` размещает контейнер приложения на странице. | The `deployOnPage()` method places the application container on the page. |
+| Метод `assignListeners()` вызывает соответствующие методы `assignListeners()` у объектов `pauseRunControls`, `setDateTimeControls` и `splashButtonBlock`. | The `assignListeners()` method calls the corresponding `assignListeners()` methods of the `pauseRunControls`, `setDateTimeControls` and `splashButtonBlock` objects. |
+| Метод `updateDateTime()` вызывает соответствующий метод `update()` у объекта `dateTimeScreen`, передавая ему строку `dateTime` в формате `"yyyy-mm-dd hh:mm"`. | The `updateDateTime()` method calls the corresponding `update()` method of the `dateTimeScreen` object, passing it a string `dateTime` in the format `"yyyy-mm-dd hh:mm"`. |
 | [🔝](#top) **[Основной модуль логики/контроля `event-hub.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/event-hub.js)** [🔝](#top) | [🔝](#top) **[Main logic/control module `event-hub.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/event-hub.js)** [🔝](#top) |
 | Импортирует объект `clock` из файла `clock.js`. | Imports the `clock` object from the `clock.js` file. |
 | Экспортирует объект `eventHub`, который является экземпляром класса `EventTarget` и содержит методы `init()` для начала работы | Exports the `eventHub` object, which is an instance of the `EventTarget` class and contains the `init()` method to start work |
@@ -32,6 +34,51 @@
 | Метод `update()` принимает строку `dateTime` в формате `"yyyy-mm-dd hh:mm"`. Из неё извлекаются год, месяц, день, часы и минуты. Извлечённые значения вписываются в соответствующие элементы `span` и `time`. | The `update()` method takes a string `dateTime` in the format `"yyyy-mm-dd hh:mm"`. From it, the year, month, day, hours and minutes are extracted. The extracted values are entered into the corresponding `span` and `time` elements. |
 
 <!-- 
+export { ui };
+
+import { dateTimeScreen } from './date-time-screen/date-time-screen.js';
+import { pauseRunControls } from './pause-run/pause-run.js';
+import { setDateTimeControls } from './set-date-time/set-date-time.js';
+import { splashButtonBlock } from './splash-button/splash-button.js';
+import { eventListHolder } from './event-list/event-list.js';
+
+
+const ui = {
+  render() {
+    const appContent = document.createElement('div');
+
+    appContent.id = 'splash-event-app';
+
+    dateTimeScreen.render();
+    pauseRunControls.render();
+    setDateTimeControls.render();
+    splashButtonBlock.render();
+    eventListHolder.render();
+
+    dateTimeScreen.appendTo(appContent);
+    pauseRunControls.appendTo(appContent);
+    setDateTimeControls.appendTo(appContent);
+    splashButtonBlock.appendTo(appContent);
+    eventListHolder.appendTo(appContent);
+
+    this.element = appContent;
+  },
+
+  assignListeners() {
+    pauseRunControls.assignListeners();
+    setDateTimeControls.assignListeners();
+  },
+
+  deployOnPage() {
+    document.body.append(this.element)
+  },
+
+  updateDateTime(dateTime) {
+    dateTimeScreen.update(dateTime);
+  }
+};
+
+
 
 
  -->

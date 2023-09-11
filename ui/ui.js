@@ -41,11 +41,3 @@ const ui = {
     dateTimeScreen.update(dateTime);
   }
 };
-
-/* 
-ui.js
-Импортирует объекты dateTimeScreen, pauseRunControls, setDateTimeControls, splashButtonBlock и eventListHolder из соответствующих файлов в подпапках папки ui.
-Экспортирует объект ui, который содержит методы render() и deployOnPage(). Метод render() создаёт всю DOM-структуру приложения, а метод deployOnPage() размещает её на странице.
-Метод render() создаёт контейнер приложения - div с id="splash-event-app". В него добавляются все элементы, которые создают методы render() соответствующих модулей. Для этого используются их методы appendTo(). После этого созданный элемент div присваивается свойству element объекта ui.
-Метод deployOnPage() размещает контейнер приложения на странице.
-*/
