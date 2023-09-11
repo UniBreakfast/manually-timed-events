@@ -43,7 +43,7 @@
 | Добавлены методы для отрисовки текущего времени и даты | Add methods to render current time and date |
 | Добавлена документация для модулей `event-hub.js` и `clock.js` | Add documentation for `event-hub.js` and `clock.js` modules |
 | [🔝](#top) **11 сентября** [🔝](#top) | [🔝](#top) **September 11** [🔝](#top) |
-| Добавлена документация для модуля `date-time-screen.js` | Add documentation for `date-time-screen.js` module |
+| Добавлена документация для модуля `date-time-screen.js` и для адаптивной/респонсивной сборки в целом | Add documentation for `date-time-screen.js` module and for adaptive/responsive build in general |
 <!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
