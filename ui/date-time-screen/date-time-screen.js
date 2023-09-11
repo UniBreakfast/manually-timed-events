@@ -39,7 +39,7 @@ const dateTimeScreen = {
     parent.append(this.element);
   },
 
-  update(dateTime) { // yyyy-mm-dd hh:mm
+  update(dateTime) { // "yyyy-mm-dd hh:mm"
     const [year, month, day, hours, minutes] = dateTime.split(/\D/);
 
     this.timeElement.dateTime = dateTime;
