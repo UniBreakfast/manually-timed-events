@@ -1,6 +1,6 @@
 export { pauseRunControls };
 
-const pauseRunControls = {
+const pauseRunControls = Object.assign(new EventTarget(), {
   render() {
     const section = document.createElement('section');
     const pausedBlock = document.createElement('div');
@@ -22,7 +22,7 @@ const pauseRunControls = {
     pauseBtn.textContent = 'pause';
     pausedSpan.textContent = 'paused';
     runningSpan.textContent = 'running';
-    
+
     pausedBlock.append(runBtn, ' ', pausedSpan);
     runningBlock.append(pauseBtn, ' ', runningSpan);
     section.append(pausedBlock, runningBlock);
@@ -32,17 +32,28 @@ const pauseRunControls = {
     this.pauseBtn = pauseBtn;
   },
 
-  toggleState() {
-    this.element.classList.toggle('paused');
-    this.element.classList.toggle('running');
+  toggleState(state) {
+    this.element.classList.toggle(
+      'paused',
+      state !== undefined && state === 'paused'
+    );
+    
+    this.element.classList.toggle(
+      'running',
+      state !== undefined && state === 'running'
+    );
   },
 
   assignListeners() {
-    this.runBtn.onclick = () => this.toggleState();
-    this.pauseBtn.onclick = () => this.toggleState();
+    this.runBtn.onclick = () => {
+      this.dispatchEvent(new CustomEvent('runPressed'));
+    };
+    this.pauseBtn.onclick = () => {
+      this.dispatchEvent(new CustomEvent('pausePressed'));
+    };
   },
 
   appendTo(parent) {
     parent.append(this.element);
   },
-};
+});

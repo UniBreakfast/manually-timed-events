@@ -8,13 +8,24 @@ function main() {
   ui.deployOnPage();
   ui.assignListeners();
 
-  eventHub.init();
+  eventHub.assignListeners();
+
+  ui.addEventListener('runRequest', eventHub.runClock);
+  ui.addEventListener('pauseRequest', eventHub.stopClock);
+
+  eventHub.addEventListener('clockStateChange', e => {
+    const { state } = e.detail;
+
+    ui.updateClockState(state);
+  });
 
   eventHub.addEventListener('timeChange', e => {
     const { dateTime } = e.detail;
 
-    ui.updateDateTime(dateTime)
+    ui.updateDateTime(dateTime);
   });
+
+  eventHub.init();
 }
 
 /* 

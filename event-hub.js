@@ -4,9 +4,11 @@ import { clock } from './clock.js';
 
 const eventHub = Object.assign(new EventTarget(), {
   init() {
-    clock.run();
+    clock.announceTime();
+  },
 
-    clock.addEventListener('tick', e => {
+  assignListeners() {
+    clock.addEventListener('change', e => {
       const { dateTime } = e.detail;
       const isoDateTime = dateTime.toISOString().replace('T', ' ').slice(0, 16)
       const detail = { dateTime: isoDateTime };
@@ -14,5 +16,21 @@ const eventHub = Object.assign(new EventTarget(), {
 
       this.dispatchEvent(event);
     });
+
+    clock.addEventListener('stateChange', e => {
+      const { state } = e.detail;
+      const detail = { state };
+      const event = new CustomEvent('clockStateChange', { detail });
+
+      this.dispatchEvent(event);
+    });
   },
+
+  runClock() {
+    clock.run();
+  },
+
+  stopClock() {
+    clock.stop();
+  }
 });

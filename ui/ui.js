@@ -7,7 +7,7 @@ import { splashButtonBlock } from './splash-button/splash-button.js';
 import { eventListHolder } from './event-list/event-list.js';
 
 
-const ui = {
+const ui = Object.assign(new EventTarget(), {
   render() {
     const appContent = document.createElement('div');
 
@@ -31,6 +31,14 @@ const ui = {
   assignListeners() {
     pauseRunControls.assignListeners();
     setDateTimeControls.assignListeners();
+
+    pauseRunControls.addEventListener('runPressed', () => {
+      this.dispatchEvent(new CustomEvent('runRequest'));
+    });
+
+    pauseRunControls.addEventListener('pausePressed', () => {
+      this.dispatchEvent(new CustomEvent('pauseRequest'));
+    });
   },
 
   deployOnPage() {
@@ -39,5 +47,9 @@ const ui = {
 
   updateDateTime(dateTime) {
     dateTimeScreen.update(dateTime);
-  }
-};
+  },
+
+  updateClockState(state) {
+    pauseRunControls.toggleState(state);
+  },
+});

@@ -2,32 +2,60 @@ export { clock };
 
 const accuracyInterval = 99;
 const multiplier = 75; // 1min per 800ms
-let prevTime = 1580666520000; // 2020-02-02 20:02
-let lastTimeStamp = Date.now();
+let prevTime = 1580673720000; // 2020-02-02 20:02
+let dateTime = new Date(prevTime);
+let lastTimeStamp;
 let prevMinute = 0;
+let minute = 0;
+let intervalId;
 
 const clock = Object.assign(new EventTarget(), {
   run() {
-    setInterval(() => {
-      const timeStamp = Date.now();
-      const delta = timeStamp - lastTimeStamp;
-      const time = prevTime + delta * multiplier;
-      const dateTime = new Date(time);
-      const minute = dateTime.getMinutes();
+    if (intervalId) return;
 
-      if (minute != prevMinute) {
-        const detail = { dateTime };
-        const event = new CustomEvent('tick', { detail });
+    intervalId = setInterval(this.updateTime, accuracyInterval);
 
-        this.dispatchEvent(event);
+    const detail = { state: 'running' };
+    const event = new CustomEvent('stateChange', { detail });
 
-        prevMinute = minute;
-      }
-
-      prevTime = time;
-      lastTimeStamp = timeStamp;
-    }, accuracyInterval);
+    this.dispatchEvent(event);
+    clock.updateTime();
   },
+
+  stop() {
+    if (!intervalId) return;
+
+    clearInterval(intervalId);
+    intervalId = null;
+
+    const detail = { state: 'paused' };
+    const event = new CustomEvent('stateChange', { detail });
+
+    this.dispatchEvent(event);
+    this.updateTime();
+    lastTimeStamp = null;
+  },
+
+  updateTime() {
+    const timeStamp = Date.now();
+    const delta = timeStamp - (lastTimeStamp || timeStamp);
+    const time = prevTime + delta * multiplier;
+
+    dateTime = new Date(time);
+    minute = dateTime.getMinutes();
+    prevTime = time;
+    lastTimeStamp = timeStamp;
+
+    if (minute != prevMinute) clock.announceTime();
+  },
+
+  announceTime() {
+    const detail = { dateTime };
+    const event = new CustomEvent('change', { detail });
+
+    this.dispatchEvent(event);
+    prevMinute = minute;
+  }
 });
 
 
