@@ -45,6 +45,8 @@
 | [🔝](#top) **11 сентября** [🔝](#top) | [🔝](#top) **September 11** [🔝](#top) |
 | Добавлена документация для модуля `date-time-screen.js` и для адаптивной/респонсивной сборки в целом | Add documentation for `date-time-screen.js` module and for adaptive/responsive build in general |
 | Реализованы запуск/остановка часов с помощью кнопок запуска/паузы | Implement clock start/stop with pause/run buttons |
+| [🔝](#top) **12 сентября** [🔝](#top) | [🔝](#top) **September 12** [🔝](#top) |
+| Обновлена документация к соответствующим модулям | Update documentation for corresponding modules |
 <!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
