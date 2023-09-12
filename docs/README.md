@@ -24,61 +24,18 @@
 | Импортирует объект `clock` из файла `clock.js`. | Imports the `clock` object from the `clock.js` file. |
 | Экспортирует объект `eventHub`, который является экземпляром класса `EventTarget` и содержит методы `init()` для начала работы | Exports the `eventHub` object, which is an instance of the `EventTarget` class and contains the `init()` method to start work |
  | Метод `init()` запускает часы методом `clock.run()`. Он же генерирует событие `timeChange` сигнализирующее о наступлении очередной минуты. Об этом он сам узнаёт из события `tick` объекта `clock`. Полученный из него объект даты и времени преобразует в строку ISO и добавляет в объект события `timeChange` в свойство `detail`. После этого он запускает событие `timeChange`. | The `init()` method starts the clock with the `clock.run()` method. It also generates the `timeChange` event signaling the onset of the next minute. He learns about this from the `tick` event of the `clock` object. It converts the date and time object obtained from it into an ISO string and adds it to the `detail` property of the `timeChange` event object. After that, it starts the `timeChange` event. |
-| [🔝](#top) **[Модуль часов/календаря `clock.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/clock.js)** [🔝](#top) | [🔝](#top) **[Clock/calendar module `clock.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/clock.js)** [🔝](#top) |
-| Экспортирует объект `clock`, который является экземпляром класса `EventTarget` и после запуска методом `run()` генерирует событие `tick` каждые 800 миллисекунд. | Exports the `clock` object, which is an instance of the `EventTarget` class and after being launched by the `run()` method generates the `tick` event every 800 milliseconds. |
-| Метод `run()` запускает таймер, который десять раз в секунду увеличивает свой собственный счётчик виртуального времени на количество миллисекунд, соответствующее прошедшему с предыдущего увеличения умноженному на 75. Что обеспечивает увеличение на одну минуту каждые 800 миллисекунд. При увеличении минут генерируется событие `tick`. | The `run()` method starts a timer that ten times a second increases its own counter of virtual time by the number of milliseconds corresponding to the time elapsed since the previous increase multiplied by 75. Which ensures an increase of one minute every 800 milliseconds. When the minutes increase, the `tick` event is generated. |
 | [🔝](#top) **[Модуль вывода даты/времени `date-time-screen.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/ui/date-time-screen/date-time-screen.js)** [🔝](#top) | [🔝](#top) **[Date/time display module `date-time-screen.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/ui/date-time-screen/date-time-screen.js)** [🔝](#top) |
 | Экспортирует объект `dateTimeScreen`, который содержит методы `render()`, `appendTo()` и `update()`. Последний обеспечивает обновление отображаемого времени. | Exports the `dateTimeScreen` object, which contains the `render()`, `appendTo()` and `update()` methods. The last one provides updating of the displayed time. |
 | Метод `render()` создаёт элементы `section`, `time`, `h3` и `h2` с классами `current-date-time`, `current-date` и `current-time` соответственно. В элемент `h3` добавляются элементы `span` с классами `year`, `month` и `day`. В элемент `h2` добавляются элементы `span` с классами `hours` и `minutes`. Все созданные элементы добавляются в `dateTimeScreen.element`. | The `render()` method creates the `section`, `time`, `h3` and `h2` elements with the `current-date-time`, `current-date` and `current-time` classes, respectively. The `h3` element is added with the `year`, `month` and `day` class elements. The `h2` element is added with the `hours` and `minutes` class elements. All created elements are added to `dateTimeScreen.element`. |
 | Метод `appendTo()` добавляет `dateTimeScreen.element` в переданный ему элемент `parent`. | The `appendTo()` method adds `dateTimeScreen.element` to the element `parent` passed to it. |
 | Метод `update()` принимает строку `dateTime` в формате `"yyyy-mm-dd hh:mm"`. Из неё извлекаются год, месяц, день, часы и минуты. Извлечённые значения вписываются в соответствующие элементы `span` и `time`. | The `update()` method takes a string `dateTime` in the format `"yyyy-mm-dd hh:mm"`. From it, the year, month, day, hours and minutes are extracted. The extracted values are entered into the corresponding `span` and `time` elements. |
+| [🔝](#top) **[Модуль часов/календаря `clock.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/clock.js)** [🔝](#top) | [🔝](#top) **[Clock/calendar module `clock.js`](https://github.com/UniBreakfast/manually-timed-events/blob/main/clock.js)** [🔝](#top) |
+| Экспортирует объект `clock`, который содержит методы `updateTime()`, `announceTime()`, `run()` и `stop()`. Вместе они позволяют вести отсчёт виртуального времени, увеличивая его на одну минуту каждые 800 миллисекунд. Приостанавливать и продолжать этот отсчёт, оповещая об изменениях времени и состояния часов. | Exports the `clock` object, which contains the `updateTime()`, `announceTime()`, `run()` and `stop()` methods. Together, they allow you to count down virtual time, increasing it by one minute every 800 milliseconds. Suspend and continue this countdown, notifying of changes in time and clock status. |
+| Метод `run()` запускает таймер, который около десяти раз в секунду вызывает метод `updateTime()`. Также он оповещает об изменении состояния часов, генерируя событие `stateChange`. | The `run()` method starts a timer that calls the `updateTime()` method about ten times a second. It also notifies of a change in the clock state by generating the `stateChange` event. |
+| Метод `updateTime()` увеличивает внутренний счётчик виртуального времени на количество миллисекунд, соответствующее прошедшему с предыдущего увеличения умноженному на 75. Что обеспечивает увеличение на одну минуту каждые 800 миллисекунд. При увеличении минут он вызывает метод `announceTime()`. | The `updateTime()` method increases the internal counter of virtual time by the number of milliseconds corresponding to the time elapsed since the previous increase multiplied by 75. Which ensures an increase of one minute every 800 milliseconds. When the minutes increase, it calls the `announceTime()` method. |
+| Метод `announceTime()` генерирует событие `change` с объектом даты и времени в свойстве `detail`. | The `announceTime()` method generates the `change` event with the date and time object in the `detail` property. |
+
 
 <!-- 
-export { ui };
-
-import { dateTimeScreen } from './date-time-screen/date-time-screen.js';
-import { pauseRunControls } from './pause-run/pause-run.js';
-import { setDateTimeControls } from './set-date-time/set-date-time.js';
-import { splashButtonBlock } from './splash-button/splash-button.js';
-import { eventListHolder } from './event-list/event-list.js';
-
-
-const ui = {
-  render() {
-    const appContent = document.createElement('div');
-
-    appContent.id = 'splash-event-app';
-
-    dateTimeScreen.render();
-    pauseRunControls.render();
-    setDateTimeControls.render();
-    splashButtonBlock.render();
-    eventListHolder.render();
-
-    dateTimeScreen.appendTo(appContent);
-    pauseRunControls.appendTo(appContent);
-    setDateTimeControls.appendTo(appContent);
-    splashButtonBlock.appendTo(appContent);
-    eventListHolder.appendTo(appContent);
-
-    this.element = appContent;
-  },
-
-  assignListeners() {
-    pauseRunControls.assignListeners();
-    setDateTimeControls.assignListeners();
-  },
-
-  deployOnPage() {
-    document.body.append(this.element)
-  },
-
-  updateDateTime(dateTime) {
-    dateTimeScreen.update(dateTime);
-  }
-};
-
-
-
 
  -->
