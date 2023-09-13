@@ -47,6 +47,8 @@
 | Реализованы запуск/остановка часов с помощью кнопок запуска/паузы | Implement clock start/stop with pause/run buttons |
 | [🔝](#top) **12 сентября** [🔝](#top) | [🔝](#top) **September 12** [🔝](#top) |
 | Обновлена документация к соответствующим модулям | Update documentation for corresponding modules |
+| [🔝](#top) **13 сентября** [🔝](#top) | [🔝](#top) **September 13** [🔝](#top) |
+| Добавлен реестр событий | Add events registry |
 <!-- 
 Build DateTimeScreen component object
 Build pauseRunControls component object
