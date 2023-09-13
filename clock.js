@@ -51,7 +51,7 @@ const clock = Object.assign(new EventTarget(), {
 
   announceTime() {
     const detail = { dateTime };
-    const event = new CustomEvent('change', { detail });
+    const event = new CustomEvent('timeChange', { detail });
 
     this.dispatchEvent(event);
     prevMinute = minute;
