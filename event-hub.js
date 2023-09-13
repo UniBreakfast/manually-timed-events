@@ -8,22 +8,9 @@ const eventHub = Object.assign(new EventTarget(), {
   },
 
   assignListeners() {
-    clock.addEventListener('change', e => {
-      const { dateTime } = e.detail;
-      const isoDateTime = dateTime.toISOString().replace('T', ' ').slice(0, 16)
-      const detail = { dateTime: isoDateTime };
-      const event = new CustomEvent('timeChange', { detail });
+    clock.addEventListener('timeChange', this.handleTimeChange);
 
-      this.dispatchEvent(event);
-    });
-
-    clock.addEventListener('stateChange', e => {
-      const { state } = e.detail;
-      const detail = { state };
-      const event = new CustomEvent('clockStateChange', { detail });
-
-      this.dispatchEvent(event);
-    });
+    clock.addEventListener('stateChange', this.handleStateChange);
   },
 
   runClock() {
@@ -32,5 +19,28 @@ const eventHub = Object.assign(new EventTarget(), {
 
   stopClock() {
     clock.stop();
-  }
+  },
+
+  handleTimeChange: e => {
+    const { dateTime } = e.detail;
+    const isoDateTime = dateTime.toISOString().replace('T', ' ').slice(0, 16)
+    const detail = { dateTime: isoDateTime };
+    const event = new CustomEvent('timeChange', { detail });
+
+    eventHub.dispatchEvent(event);
+  },
+
+  handleStateChange: e => {
+    const { state } = e.detail;
+    const detail = { state };
+    const event = new CustomEvent('clockStateChange', { detail });
+
+    eventHub.dispatchEvent(event);
+  },
 });
+
+/* 
+
+
+
+*/

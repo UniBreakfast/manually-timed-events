@@ -45,15 +45,27 @@ const pauseRunControls = Object.assign(new EventTarget(), {
   },
 
   assignListeners() {
-    this.runBtn.onclick = () => {
-      this.dispatchEvent(new CustomEvent('runPressed'));
-    };
-    this.pauseBtn.onclick = () => {
-      this.dispatchEvent(new CustomEvent('pausePressed'));
-    };
+    this.runBtn.onclick = this.handleRunClick;
+    this.pauseBtn.onclick = this.handlePauseClick;
+  },
+
+  handleRunClick: () => {
+    const event = new CustomEvent('runPressed');
+    pauseRunControls.dispatchEvent(event);
+  },
+
+  handlePauseClick: () => {
+    const event = new CustomEvent('pausePressed');
+    pauseRunControls.dispatchEvent(event);
   },
 
   appendTo(parent) {
     parent.append(this.element);
   },
 });
+
+/* 
+
+
+
+*/

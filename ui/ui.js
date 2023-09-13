@@ -32,13 +32,9 @@ const ui = Object.assign(new EventTarget(), {
     pauseRunControls.assignListeners();
     setDateTimeControls.assignListeners();
 
-    pauseRunControls.addEventListener('runPressed', () => {
-      this.dispatchEvent(new CustomEvent('runRequest'));
-    });
+    pauseRunControls.addEventListener('runPressed', this.handleRun);
 
-    pauseRunControls.addEventListener('pausePressed', () => {
-      this.dispatchEvent(new CustomEvent('pauseRequest'));
-    });
+    pauseRunControls.addEventListener('pausePressed', this.handlePause);
   },
 
   deployOnPage() {
@@ -52,4 +48,20 @@ const ui = Object.assign(new EventTarget(), {
   updateClockState(state) {
     pauseRunControls.toggleState(state);
   },
+
+  handleRun: () => {
+    const event = new CustomEvent('runRequest');
+    ui.dispatchEvent(event);
+  },
+
+  handlePause: () => {
+    const event = new CustomEvent('pauseRequest');
+    ui.dispatchEvent(event);
+  },
 });
+
+/* 
+
+
+
+*/
