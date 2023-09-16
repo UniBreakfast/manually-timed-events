@@ -1,6 +1,6 @@
 export { setDateTimeControls };
 
-const setDateTimeControls = {
+const setDateTimeControls = Object.assign(new EventTarget(), {
   render() {
     const section = document.createElement('section');
     const openModalBtn = document.createElement('button');
@@ -45,6 +45,13 @@ const setDateTimeControls = {
 
   toggleModal() {
     this.glass.hidden = !this.glass.hidden;
+
+    if (!this.glass.hidden) {
+      this.form.date.focus();
+
+      const event = new CustomEvent('open');
+      this.dispatchEvent(event);
+    }
   },
 
   assignListeners() {
@@ -53,10 +60,17 @@ const setDateTimeControls = {
     this.cancelBtn.onclick = () => this.toggleModal();
   },
 
+  update(dateTime) {
+    const [date, time] = dateTime.split(' ');
+
+    this.form.date.value = date;
+    this.form.time.value = time;
+  },
+
   appendTo(parent) {
     parent.append(this.element);
   },
-};
+});
 
 function buildMarkup() {
   return `

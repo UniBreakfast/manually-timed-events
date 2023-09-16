@@ -49,18 +49,11 @@
 | Обновлена документация к соответствующим модулям | Update documentation for corresponding modules |
 | [🔝](#top) **13 сентября** [🔝](#top) | [🔝](#top) **September 13** [🔝](#top) |
 | Добавлен реестр событий | Add events registry |
+| [🔝](#top) **16 сентября** [🔝](#top) | [🔝](#top) **September 16** [🔝](#top) |
+| В форму настройки даты/времени добавлены текущие значения | Add current values to date/time settings form |
+| [🔝](#top) **17 сентября** [🔝](#top) | [🔝](#top) **September 17** [🔝](#top) |
+
 <!-- 
-Build DateTimeScreen component object
-Build pauseRunControls component object
-Build setDateTimeControls component object
-Build splashButtonBlock component object
-Build eventListHolder component object
-Make documentation for app.js
-Make documentation for ui.js
-Make documentation for event-hub.js
-Make documentation for current-date-time.html layout
-Make documentation for event-list.html layout
-Make documentation for pause-run-state.html layout
-Make documentation for set-date-time.html layout
-Make documentation for splash-button.html layout 
+
+
 -->

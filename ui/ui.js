@@ -35,6 +35,8 @@ const ui = Object.assign(new EventTarget(), {
     pauseRunControls.addEventListener('runPressed', this.handleRun);
 
     pauseRunControls.addEventListener('pausePressed', this.handlePause);
+
+    setDateTimeControls.addEventListener('open', this.handleFormOpen);
   },
 
   deployOnPage() {
@@ -42,6 +44,7 @@ const ui = Object.assign(new EventTarget(), {
   },
 
   updateDateTime(dateTime) {
+    ui.dateTime = dateTime;
     dateTimeScreen.update(dateTime);
   },
 
@@ -57,6 +60,10 @@ const ui = Object.assign(new EventTarget(), {
   handlePause: () => {
     const event = new CustomEvent('pauseRequest');
     ui.dispatchEvent(event);
+  },
+
+  handleFormOpen: () => {
+    setDateTimeControls.update(ui.dateTime);
   },
 });
 
