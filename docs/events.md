@@ -94,3 +94,13 @@
 
 [🔝](#top)
 ---
+
+**event emitter**: &nbsp; `setDateTimeControls` object<br>
+**type**: &nbsp; `open`, custom event<br>
+**cause**: &nbsp; `toggleModal()` method called<br>
+**handler**: &nbsp; `ui.handleFormOpen()` method<br>
+**assigned in**: &nbsp; `ui.assignListeners()` method<br>
+**consequence**: &nbsp; `setDateTimeControls.update()` method is called
+
+[🔝](#top)
+---

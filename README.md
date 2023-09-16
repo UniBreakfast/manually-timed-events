@@ -5,6 +5,7 @@
 |-:|:-|
 | Это приложение моделирует течение времени с некоторой выбранной скоростью, с возможностью остановки, возобновления и перемотки на любые дату/время. Пользователь может создавать событие "splash". Пользователь также может видеть текущие дату/время, список всех событий, их количество, дату/время первого, последнего и свежедобавленного, минимальный, максимальный и средний интервалы. | This app simulates the flow of time with some selected speed, with the ability to stop, resume and rewind to any date/time. The user can create a "splash" event. User can also see the current date/time, a list of all events, their number, the date/time of the first, last and newly added, minimum, maximum and average intervals. |
 | [**Документация приложения**](https://github.com/UniBreakfast/manually-timed-events/tree/main/docs) | [**Application documentation**](https://github.com/UniBreakfast/manually-timed-events/tree/main/docs) |
+| [**Реестр событий**](http://unibreakfast.github.io/manually-timed-events/docs/events.md) | [**Events registry**](http://unibreakfast.github.io/manually-timed-events/docs/events.md) |
 | [**Описание вёрстки**](https://github.com/UniBreakfast/manually-timed-events/tree/main/layout) | [**Layout description**](https://github.com/UniBreakfast/manually-timed-events/tree/main/layout) |
 | [**История разработки**](https://github.com/UniBreakfast/manually-timed-events/tree/main/devlog) | [**Devlog**](https://github.com/UniBreakfast/manually-timed-events/tree/main/devlog) |
 | **истории** | **stories** |
