@@ -56,8 +56,20 @@ const setDateTimeControls = Object.assign(new EventTarget(), {
 
   assignListeners() {
     this.openModalBtn.onclick = () => this.toggleModal();
-    this.setBtn.onclick = () => this.toggleModal();
     this.cancelBtn.onclick = () => this.toggleModal();
+
+    this.form.onsubmit = () => {
+      const date = this.form.date.value;
+      const time = this.form.time.value;
+      const dateTime = `${date} ${time}`;
+
+      const event = new CustomEvent('newDateTime', {
+        detail: { dateTime },
+      });
+
+      this.dispatchEvent(event);
+      this.toggleModal();
+    }
   },
 
   update(dateTime) {

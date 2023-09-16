@@ -51,6 +51,7 @@
 | Добавлен реестр событий | Add events registry |
 | [🔝](#top) **16 сентября** [🔝](#top) | [🔝](#top) **September 16** [🔝](#top) |
 | В форму настройки даты/времени добавлены текущие значения | Add current values to date/time settings form |
+| Реализована установка даты/времени с помощью формы | Implement date/time settings form |
 | [🔝](#top) **17 сентября** [🔝](#top) | [🔝](#top) **September 17** [🔝](#top) |
 
 <!-- 

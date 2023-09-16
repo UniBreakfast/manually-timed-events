@@ -37,6 +37,13 @@ const eventHub = Object.assign(new EventTarget(), {
 
     eventHub.dispatchEvent(event);
   },
+
+  updateDateTime(dateTime) {
+    const [year, month, day, hour, minute] = dateTime.split(/\D/);
+    const date = new Date(Date.UTC(year, month - 1, day, hour, minute))
+    
+    clock.setDateTime(date);
+  },
 });
 
 /* 

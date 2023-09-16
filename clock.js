@@ -55,7 +55,18 @@ const clock = Object.assign(new EventTarget(), {
 
     this.dispatchEvent(event);
     prevMinute = minute;
-  }
+  },
+
+  setDateTime(date) {
+    prevTime = date.getTime();
+    dateTime = date;
+    lastTimeStamp = null;
+
+    const detail = { dateTime };
+    const event = new CustomEvent('timeChange', { detail });
+
+    this.dispatchEvent(event);
+  },
 });
 
 

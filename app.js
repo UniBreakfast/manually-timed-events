@@ -12,6 +12,11 @@ function main() {
 
   ui.addEventListener('runRequest', eventHub.runClock);
   ui.addEventListener('pauseRequest', eventHub.stopClock);
+  ui.addEventListener('updateDateTimeRequest', e => {
+    const { dateTime } = e.detail;
+
+    eventHub.updateDateTime(dateTime);
+  });
 
   eventHub.addEventListener('clockStateChange', e => {
     const { state } = e.detail;
