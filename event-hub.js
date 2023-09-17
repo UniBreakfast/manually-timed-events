@@ -2,6 +2,8 @@ export { eventHub };
 
 import { clock } from './clock.js';
 
+const events = [];
+
 const eventHub = Object.assign(new EventTarget(), {
   init() {
     clock.announceTime();
@@ -43,6 +45,24 @@ const eventHub = Object.assign(new EventTarget(), {
     const date = new Date(Date.UTC(year, month - 1, day, hour, minute))
     
     clock.setDateTime(date);
+  },
+
+  triggerSplash() {
+    const dateTime = clock.getDateTime();
+    const isoDateTime = dateTime.toISOString().replace('T', ' ').slice(0, 16)
+    const detail = { dateTime, isoDateTime };
+    const event = new CustomEvent('splash', {detail});
+
+    events.push(event);
+    events.sort((a, b) => a.detail.dateTime - b.detail.dateTime);
+
+    eventHub.dispatchEvent(event);
+  },
+
+  getEvents() {
+    const dateTime = clock.getDateTime();
+
+    return events.filter(e => e.detail.dateTime <= dateTime);
   },
 });
 

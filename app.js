@@ -17,6 +17,7 @@ function main() {
 
     eventHub.updateDateTime(dateTime);
   });
+  ui.addEventListener('splashTriggered', eventHub.triggerSplash);
 
   eventHub.addEventListener('clockStateChange', e => {
     const { state } = e.detail;
@@ -26,8 +27,16 @@ function main() {
 
   eventHub.addEventListener('timeChange', e => {
     const { dateTime } = e.detail;
+    const events = eventHub.getEvents();
 
     ui.updateDateTime(dateTime);
+    ui.updateEvents(events);
+  });
+
+  eventHub.addEventListener('splash', e => {
+    const events = eventHub.getEvents();
+
+    ui.updateEvents(events);
   });
 
   eventHub.init();

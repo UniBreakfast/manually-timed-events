@@ -3,11 +3,31 @@ export { eventListHolder };
 const eventListHolder = {
   render() {
     const section = document.createElement('section');
+    const ul = document.createElement('ul');
 
     section.classList.add('event-list');
-    section.innerHTML = buildMarkup();
+    ul.classList.add('event-list');
+    section.append(ul);
 
     this.element = section;
+    this.list = ul;
+  },
+
+  update(events) {
+    const items = events.map(event => {
+      const li = document.createElement('li');
+      const time = document.createElement('time');
+
+      li.classList.add('event');
+      time.setAttribute('datetime', event.detail.isoDateTime);
+      time.textContent = event.detail.isoDateTime;
+
+      li.append('splash at ', time);
+
+      return li;
+    });
+    
+    this.list.replaceChildren(...items);
   },
 
   appendTo(parent) {

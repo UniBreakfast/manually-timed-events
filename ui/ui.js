@@ -31,6 +31,7 @@ const ui = Object.assign(new EventTarget(), {
   assignListeners() {
     pauseRunControls.assignListeners();
     setDateTimeControls.assignListeners();
+    splashButtonBlock.assignListeners();
 
     pauseRunControls.addEventListener('runPressed', this.handleRun);
 
@@ -39,6 +40,8 @@ const ui = Object.assign(new EventTarget(), {
     setDateTimeControls.addEventListener('open', this.handleFormOpen);
 
     setDateTimeControls.addEventListener('newDateTime', this.handleNewDateTime);
+
+    splashButtonBlock.addEventListener('splashPressed', this.handleSplashPress);
   },
 
   deployOnPage() {
@@ -52,6 +55,10 @@ const ui = Object.assign(new EventTarget(), {
 
   updateClockState(state) {
     pauseRunControls.toggleState(state);
+  },
+
+  updateEvents(events) {
+    eventListHolder.update(events);
   },
 
   handleRun: () => {
@@ -74,7 +81,12 @@ const ui = Object.assign(new EventTarget(), {
     const event = new CustomEvent('updateDateTimeRequest', {detail});
 
     ui.dispatchEvent(event);
-  }
+  },
+
+  handleSplashPress: () => {
+    const event = new CustomEvent('splashTriggered');
+    ui.dispatchEvent(event);
+  },
 });
 
 /* 

@@ -67,6 +67,10 @@ const clock = Object.assign(new EventTarget(), {
 
     this.dispatchEvent(event);
   },
+
+  getDateTime() {
+    return dateTime;
+  },
 });
 
 
