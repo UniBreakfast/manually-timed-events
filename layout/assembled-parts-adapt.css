@@ -18,6 +18,11 @@ body {
   gap: 3vmin;
 }
 
+.modal {
+  max-width: 70%;
+  max-height: 80%;
+}
+
 section.current-date-time {
   grid-area: clock;
 }
@@ -30,7 +35,7 @@ section.set-date-time {
   grid-area: set-btn;
 }
 
-section.splash {
+section.splash-stats {
   grid-area: splash;
   text-align: center;
 }
@@ -39,6 +44,23 @@ section.event-list {
   grid-area: events;
   overflow: auto;
 }
+
+.splash-stats .modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.splash-stats h3, .splash-stats button {
+  flex-shrink: 0;
+}
+
+.splash-stats dl {
+  overflow: auto;
+}
+
+
+
+
 
 /*!====== Mobile Portrait (320px - 480px) ======!*/
 
@@ -76,7 +98,7 @@ section.event-list {
     align-self: end;
   }
 
-  section.splash {
+  section.splash-stats {
     text-align: right;
   }
 }
@@ -98,7 +120,7 @@ section.event-list {
     justify-self: unset;
   }
 
-  section.splash {
+  section.splash-stats {
     text-align: center;
   }
 }
@@ -119,7 +141,7 @@ section.event-list {
     align-self: end;
   }
 
-  section.splash {
+  section.splash-stats {
     text-align: right;
   }
 }

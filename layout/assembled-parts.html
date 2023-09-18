@@ -15,12 +15,16 @@
 			const [pauseRunStateContainer] = document.getElementsByClassName('pause-run-state');
 			const [pauseBtn, runBtn] = pauseRunStateContainer.getElementsByTagName('button');
 			const [setDateTimeBtn, setBtn, cancelBtn] = document.querySelectorAll('.set-date-time button');
-			const glass = document.querySelector('.set-date-time .glass');
+			const setTimeGlass = document.querySelector('.set-date-time .glass');
+			const [statsBtn, closeBtn] = document.querySelectorAll('button.stats, button.close');
+			const statsGlass = document.querySelector('.splash-stats .glass');
 
 			pauseBtn.onclick = runBtn.onclick = handleRunPauseClick;
 			setDateTimeBtn.onclick = toggleSetDateTimeModal;
 			cancelBtn.onclick = toggleSetDateTimeModal;
 			setBtn.onclick = toggleSetDateTimeModal;
+			statsBtn.onclick = toggleStatsModal;
+			closeBtn.onclick = toggleStatsModal;
 
 			function handleRunPauseClick() {
 				pauseRunStateContainer.classList.toggle('paused');
@@ -28,7 +32,11 @@
 			}
 
 			function toggleSetDateTimeModal() {
-				glass.hidden = !glass.hidden;
+				setTimeGlass.hidden = !setTimeGlass.hidden;
+			}
+
+			function toggleStatsModal() {
+				statsGlass.toggleAttribute('hidden');
 			}
 		}
 	</script>
@@ -97,8 +105,50 @@
 			</div>
 		</section>
 
-		<section class="splash">
-			<button class="splash">splash</button>
+		<section class="splash-stats">
+			<button class="stats">View Stats</button>
+			<button class="splash">Splash</button>
+
+			<div class="glass" hidden>
+				<div class="modal">
+					<h3>Stats</h3>
+					<dl>
+						<dt>Splash count up to this point in time:</dt>
+						<dd>
+							<b>18</b>
+							(of 22 recorded)
+						</dd>
+
+						<dt>Chronologically earliest:</dt>
+						<dd><b>2020-02-02 18:00</b></dd>
+
+						<dt>Chronologically latest:</dt>
+						<dd><b>2020-02-03 04:44</b></dd>
+
+						<dt>Newly added:</dt>
+						<dd><b>2020-02-03 00:01</b></dd>
+
+						<dt>Minimum interval:</dt>
+						<dd>
+							<b>3 minutes</b>
+							<sub>(although there is an interval of less than 1 minute in the future)</sub>
+						</dd>
+
+						<dt>Maximum interval:</dt>
+						<dd>
+							<b>44 minutes</b>
+							<sub>(although there is an interval of 100 minutes in the future)</sub>
+						</dd>
+
+						<dt>Average interval:</dt>
+						<dd>
+							<b>31 minutes</b>
+							<sub>(44 minutes if all recorded events are considered)</sub>
+						</dd>
+					</dl>
+					<button class="close">Close</button>
+				</div>
+			</div>
 		</section>
 
 		<section class="event-list">

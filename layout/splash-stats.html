@@ -1,6 +1,6 @@
 <section class="splash-stats">
-  <button class="splash">Splash</button>
   <button class="stats">View Stats</button>
+  <button class="splash">Splash</button>
 
   <div class="glass">
     <div class="modal">
@@ -71,11 +71,4 @@
 <script>
   const [statsBtn, closeBtn] = document.querySelectorAll('button.stats, button.close');
   const glass = document.querySelector('.splash-stats .glass');
-
-  statsBtn.onclick = toggleStatsModal;
-  closeBtn.onclick = toggleStatsModal;
-
-  function toggleStatsModal() {
-    glass.toggleAttribute('hidden');
-  }
 </script>
