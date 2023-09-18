@@ -1,0 +1,80 @@
+<section class="stats">
+  <button class="stats">View Stats</button>
+
+  <div class="glass">
+    <div class="modal">
+      <h3>Stats</h3>
+      <dl>
+        <dt>Splash count up to this point in time:</dt>
+        <dd>
+          <b>18</b> 
+          (of 22 recorded)
+        </dd>
+
+        <dt>Chronologically earliest:</dt>
+        <dd><b>2020-02-02 18:00</b></dd>
+
+        <dt>Chronologically latest:</dt>
+        <dd><b>2020-02-03 04:44</b></dd>
+
+        <dt>Newly added:</dt>
+        <dd><b>2020-02-03 00:01</b></dd>
+
+        <dt>Minimum interval:</dt>
+        <dd>
+          <b>3 minutes</b>
+          <sub>(although there is an interval of less than 1 minute in the future)</sub>
+        </dd>
+
+        <dt>Maximum interval:</dt>
+        <dd>
+          <b>44 minutes</b>
+          <sub>(although there is an interval of 100 minutes in the future)</sub>
+        </dd>
+
+        <dt>Average interval:</dt>
+        <dd>
+          <b>31 minutes</b>
+          <sub>(44 minutes if all recorded events are considered)</sub>
+        </dd>
+      </dl>
+      <button class="close">Close</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  [hidden] {
+    display: none !important;
+  }
+
+  .glass {
+    position: fixed;
+    inset: 0;
+    display: flex;
+  }
+
+  .modal {
+    margin: auto;
+    width: max-content;
+    border: 1px solid;
+    padding: 1em;
+  }
+
+  dd {
+    font-size: larger;
+    margin-bottom: 12px;
+  }
+</style>
+
+<script>
+  const [statsBtn, closeBtn] = document.querySelectorAll('.stats button');
+  const glass = document.querySelector('.stats .glass');
+
+  statsBtn.onclick = toggleStatsModal;
+  closeBtn.onclick = toggleStatsModal;
+
+  function toggleStatsModal() {
+    glass.toggleAttribute('hidden');
+  }
+</script>
